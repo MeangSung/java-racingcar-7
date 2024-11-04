@@ -16,8 +16,8 @@ public class RacingGameService {
 
     public List<String> play(Game game) {
         int count = game.getCount();
-        String[] cars = game.getCars();
-        int[] moveCount = new int[cars.length];
+        List<String> cars = game.getCars();
+        int[] moveCount = new int[cars.size()];
 
         for (int i = 0; i < count; i++) {
             move(moveCount);
@@ -35,20 +35,20 @@ public class RacingGameService {
         }
     }
 
-    private void displayRace(String[] cars, int[] result) {
-        for (int i = 0; i < cars.length; i++) {
-            System.out.println(cars[i] + " : " + "-".repeat(Math.max(0, result[i])));
+    private void displayRace(List<String> cars, int[] result) {
+        for (int i = 0; i < cars.size(); i++) {
+            System.out.println(cars.get(i) + " : " + "-".repeat(Math.max(0, result[i])));
         }
         System.out.println();
     }
 
-    private List<String> determineWinners(String[] cars, int[] moveCount) {
+    private List<String> determineWinners(List<String> cars, int[] moveCount) {
         int maxDistance = Arrays.stream(moveCount).max().orElseThrow(NullPointerException::new);
         List<String> winners = new ArrayList<>();
 
-        for (int i = 0; i < cars.length; i++) {
+        for (int i = 0; i < cars.size(); i++) {
             if(moveCount[i] == maxDistance){
-                winners.add(cars[i]);
+                winners.add(cars.get(i));
             }
         }
         return winners;

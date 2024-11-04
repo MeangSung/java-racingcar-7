@@ -1,15 +1,17 @@
 package racingcar.common;
 
+import java.util.List;
+
 public class Game {
     private final int count;
-    private final String[] cars;
+    private final List<String> cars;
 
-    public Game(String[] cars, int count) {
+    public Game(List<String> cars, int count) {
         this.cars = cars;
         this.count = count;
     }
 
-    public String[] getCars() {
+    public List<String> getCars() {
         return cars;
     }
 

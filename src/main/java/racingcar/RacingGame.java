@@ -1,25 +1,23 @@
 package racingcar;
 
-import racingcar.adapter.StringListAdapter;
+import racingcar.adapter.InputAdapter;
 import racingcar.common.Game;
 import racingcar.controller.RacingController;
-import racingcar.view.Input;
 import racingcar.view.Output;
 
 public class RacingGame {
 
-    private final StringListAdapter stringListAdapter;
+    private final InputAdapter inputAdapter;
     private final RacingController racingController;
 
     public RacingGame() {
-        stringListAdapter = new StringListAdapter();
+        inputAdapter = new InputAdapter();
         racingController = new RacingController();
     }
 
-    public void startRacingGame() {
-        Input input = new Input();
+    public void start() {
         Output output = new Output();
-        Game game = new Game(stringListAdapter.parseCars(input.inputRacingCars()), stringListAdapter.parseCount(input.inputCount()));
+        Game game = inputAdapter.getGame();
         output.output(racingController.start(game));
     }
 }
